@@ -4,6 +4,7 @@ import About from "@/components/About";
 import Services from "@/components/Services";
 import BookingForm from "@/components/BookingForm";
 import Reviews from "@/components/Reviews";
+import SocialChannels from "@/components/SocialChannels";
 import VideoSection from "@/components/VideoSection";
 import BlogPreview from "@/components/BlogPreview";
 import Footer from "@/components/Footer";
@@ -19,6 +20,7 @@ export default function Home() {
         <Services />
         <BookingForm />
         <Reviews />
+        <SocialChannels />
         <VideoSection />
         <BlogPreview />
       </main>
