@@ -19,9 +19,9 @@ export default function About() {
           <div className="relative">
             <div className="rounded-3xl overflow-hidden shadow-xl">
               <img
-                src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=700&q=80"
+                src="/doctor-about.png"
                 alt="Педиатр Потёмина И.В. на приёме"
-                className="w-full h-[500px] object-cover"
+                className="w-full h-[600px] object-cover object-[50%_18%]"
               />
             </div>
             {/* Floating quote */}

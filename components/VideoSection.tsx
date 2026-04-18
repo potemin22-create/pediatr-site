@@ -4,22 +4,22 @@ import { Play } from "lucide-react";
 
 const videos = [
   {
-    id: "dQw4w9WgXcQ",
-    title: "О враче: 40 лет в педиатрии",
-    description: "Ирина Викторовна рассказывает о своём пути в медицине и принципах работы с детьми и родителями.",
-    thumbnail: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=640&q=80",
+    id: "D2i0lXS_rFc",
+    title: "Профилактика ОРВИ и гриппа у детей",
+    description: "Рекомендации опытного педиатра: как защитить ребёнка в сезон простуд и что делать при первых симптомах.",
+    thumbnail: "https://img.youtube.com/vi/D2i0lXS_rFc/hqdefault.jpg",
   },
   {
-    id: "dQw4w9WgXcQ",
-    title: "Советы родителям: первые симптомы ОРВИ",
-    description: "Как распознать первые признаки болезни у ребёнка и когда нужно срочно обратиться к врачу.",
-    thumbnail: "https://images.unsplash.com/photo-1584515933487-779824d29309?w=640&q=80",
+    id: "0bzhHBFbw1Q",
+    title: "Как укрепить иммунитет ребёнка",
+    description: "Подкаст с педиатром: как поддержать естественный иммунитет ребёнка без лишних таблеток.",
+    thumbnail: "https://img.youtube.com/vi/0bzhHBFbw1Q/hqdefault.jpg",
   },
   {
-    id: "dQw4w9WgXcQ",
-    title: "Как подготовиться к приёму педиатра",
-    description: "Практические советы: что взять с собой, как успокоить ребёнка перед визитом к врачу.",
-    thumbnail: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=640&q=80",
+    id: "beIZj6AEirg",
+    title: "Как лечить ОРВИ у ребёнка",
+    description: "Педиатр объясняет: что помогает, а что лишнее при лечении простуды у детей разного возраста.",
+    thumbnail: "https://img.youtube.com/vi/beIZj6AEirg/hqdefault.jpg",
   },
 ];
 

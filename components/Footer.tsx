@@ -24,9 +24,9 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4">Контакты</h4>
             <div className="space-y-3 text-sm">
-              <a href="tel:+79991234567" className="flex items-center gap-2 hover:text-mint-400 transition-colors">
+              <a href="tel:+79085354482" className="flex items-center gap-2 hover:text-mint-400 transition-colors">
                 <Phone className="w-4 h-4 text-mint-400 flex-shrink-0" />
-                +7 (999) 123-45-67
+                +7 (908) 535-44-82
               </a>
               <a href="mailto:potemina@pediatr.ru" className="flex items-center gap-2 hover:text-mint-400 transition-colors">
                 <Mail className="w-4 h-4 text-mint-400 flex-shrink-0" />
@@ -34,7 +34,7 @@ export default function Footer() {
               </a>
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-mint-400 flex-shrink-0 mt-0.5" />
-                <span>г. Москва, ул. Примерная, д. 1, оф. 205</span>
+                <span>г. Пенза</span>
               </div>
               <div className="flex items-start gap-2">
                 <Clock className="w-4 h-4 text-mint-400 flex-shrink-0 mt-0.5" />

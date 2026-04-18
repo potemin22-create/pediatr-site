@@ -1,11 +1,10 @@
 "use client";
 import { useState } from "react";
-import { CheckCircle, Calendar, Phone, User, Mail, MessageSquare } from "lucide-react";
+import { CheckCircle, Calendar, Phone, User, MessageSquare } from "lucide-react";
 
 interface FormData {
   name: string;
   phone: string;
-  email: string;
   date: string;
   service: string;
   message: string;
@@ -24,25 +23,44 @@ const serviceOptions = [
 
 export default function BookingForm() {
   const [form, setForm] = useState<FormData>({
-    name: "", phone: "", email: "", date: "", service: "", message: "",
+    name: "", phone: "", date: "", service: "", message: "",
   });
   const [errors, setErrors] = useState<Partial<FormData>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [sendError, setSendError] = useState(false);
 
   const validate = (): boolean => {
     const newErrors: Partial<FormData> = {};
     if (!form.name.trim()) newErrors.name = "Введите имя";
     if (!form.phone.trim()) newErrors.phone = "Введите телефон";
     else if (!/^[\d\s\-+()]{7,}$/.test(form.phone)) newErrors.phone = "Неверный формат телефона";
-    if (form.email && !/\S+@\S+\.\S+/.test(form.email)) newErrors.email = "Неверный email";
     if (!form.date) newErrors.date = "Выберите дату";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validate()) setSubmitted(true);
+    if (!validate()) return;
+    setLoading(true);
+    setSendError(false);
+    try {
+      const res = await fetch("/api/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        setSendError(true);
+      }
+    } catch {
+      setSendError(true);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const today = new Date().toISOString().split("T")[0];
@@ -61,7 +79,7 @@ export default function BookingForm() {
             </p>
             <button
               className="btn-outline"
-              onClick={() => { setSubmitted(false); setForm({ name: "", phone: "", email: "", date: "", service: "", message: "" }); }}
+              onClick={() => { setSubmitted(false); setForm({ name: "", phone: "", date: "", service: "", message: "" }); }}
             >
               Записаться снова
             </button>
@@ -117,23 +135,6 @@ export default function BookingForm() {
             {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
           </div>
 
-          {/* Email */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              <Mail className="w-4 h-4 inline mr-1" />Email
-            </label>
-            <input
-              type="email"
-              value={form.email}
-              onChange={(e) => setForm({ ...form, email: e.target.value })}
-              placeholder="example@mail.ru"
-              className={`w-full border rounded-xl px-4 py-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-mint-400 transition ${
-                errors.email ? "border-red-400" : "border-gray-200"
-              }`}
-            />
-            {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
-          </div>
-
           {/* Date + Service */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
@@ -182,9 +183,12 @@ export default function BookingForm() {
             />
           </div>
 
-          <button type="submit" className="btn-primary w-full text-base py-4">
-            Отправить заявку
+          <button type="submit" disabled={loading} className="btn-primary w-full text-base py-4 disabled:opacity-60">
+            {loading ? "Отправляем..." : "Отправить заявку"}
           </button>
+          {sendError && (
+            <p className="text-red-500 text-sm text-center">Ошибка отправки. Позвоните нам: +7 (908) 535-44-82</p>
+          )}
 
           <p className="text-xs text-gray-400 text-center">
             Нажимая кнопку, вы соглашаетесь с обработкой персональных данных

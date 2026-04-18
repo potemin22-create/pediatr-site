@@ -99,9 +99,9 @@ export default function Hero() {
                   <Award className="w-5 h-5" />
                 </div>
                 <div className="font-serif text-3xl font-bold text-gray-800">
-                  <Counter target={1} />
+                  <Counter target={85000} suffix="+" />
                 </div>
-                <div className="text-sm text-gray-500">категория</div>
+                <div className="text-sm text-gray-500">часов практики</div>
               </div>
             </div>
           </div>
@@ -111,7 +111,7 @@ export default function Hero() {
             <div className="relative">
               <div className="w-72 h-72 md:w-96 md:h-96 rounded-full bg-mint-100 overflow-hidden shadow-2xl ring-8 ring-white">
                 <img
-                  src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80"
+                  src="/doctor-hero.png"
                   alt="Потёмина Ирина Викторовна — педиатр"
                   className="w-full h-full object-cover object-top"
                 />
